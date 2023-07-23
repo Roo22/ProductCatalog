@@ -30,13 +30,13 @@ namespace WebApplication5
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddAuthentication("cookie").AddCookie("cookie", x => x.LoginPath = "/Home");
+            services.AddAuthentication("cookie").AddCookie("cookie");
             services.AddAuthorization(options =>
             {
                 options.FallbackPolicy = new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build();
 
             });
-            services.AddIdentity<AppUser, IdentityRole>(options =>
+            services.AddIdentity<User, IdentityRole>(options =>
             {
                 
                 options.Lockout.AllowedForNewUsers = true;
@@ -50,7 +50,7 @@ namespace WebApplication5
 
                 options.User.RequireUniqueEmail = true;
             }).AddEntityFrameworkStores<DataContext>()
-            .AddSignInManager<SignInManager<AppUser>>().AddUserManager<UserManager<AppUser>>();
+            .AddSignInManager<SignInManager<User>>().AddUserManager<UserManager<User>>();
             services.AddScoped<IEntityDBRepo<Category>, CategoryDbRepo>();
             services.AddScoped<IEntityDBRepo<Product>,ProductDbRepo>();
             services.AddDbContext<DataContext>

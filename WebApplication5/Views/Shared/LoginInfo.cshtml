@@ -1,10 +1,9 @@
 ﻿@using Microsoft.AspNetCore.Identity;
 @using Microsoft.Extensions.DependencyInjection;
-@using WebApplication5.Domain;
 @inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
 
 @{
-    var signInManager = HttpContextAccessor.HttpContext.RequestServices.GetRequiredService<SignInManager<AppUser>>();
+    var signInManager = HttpContextAccessor.HttpContext.RequestServices.GetRequiredService<SignInManager<User>>();
 }
 
 @if (signInManager.IsSignedIn(User))
@@ -14,7 +13,7 @@
         Hello.. @User.Identity.Name
     </a>
     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-        <a class="dropdown-item" asp-action="Logout" asp-controller="Home">
+        <a class="dropdown-item" asp-action="Logout" asp-controller="Account">
             LogOut
         </a>
     </div>
@@ -23,10 +22,10 @@
 else
 {
 <li class="nav-item">
-    <a class="dropdown-item" asp-action="Login" asp-controller="Home">
+        <a class="dropdown-item" asp-action="Login" asp-controller="Account">
         LogIn
     </a>
-    <a class="dropdown-item" asp-action="Register" asp-controller="Home">
+        <a class="dropdown-item" asp-action="Register" asp-controller="Account">
         Register
     </a>
  

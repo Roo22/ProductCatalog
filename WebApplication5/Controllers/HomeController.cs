@@ -20,31 +20,24 @@ namespace WebApplication5.Controllers
     [AllowAnonymous]
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
-        public UserManager<AppUser> UserManager;
-        private readonly SignInManager<AppUser> signInManager;
         ProductDbRepo productDbRepo;
-        DataContext dataContext;
-        public HomeController(ILogger<HomeController> logger,UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, DataContext dataContext)
-        {
-            _logger = logger;
-            this.UserManager = userManager;
-            this.signInManager = signInManager;
-            this.dataContext = dataContext;
-        }
+        
+        
+        
         public async Task<IActionResult> IndexAsync()
         {
-            var products = productDbRepo.List();
+            if (productDbRepo != null)
+            {
+                var products = productDbRepo.List();
 
-            if (products != null)
-            {
-                return View();
+                if (products != null)
+                {
+                    return View();
+                }
             }
-            else
-            {
-                ViewData.Add("CommingSoon", "Comming Soon");
-                return View();
-            }       
+
+            ViewData.Add("CommingSoon", "Comming Soon");
+            return View();
         }
 
 
@@ -54,87 +47,7 @@ namespace WebApplication5.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
         [HttpGet]
-        public IActionResult Register()
-        {
-            return View();
-        }
-        [HttpPost]
-        public async Task<IActionResult> Register(User Authuser)
-        {
-            
-            var user = dataContext.User.SingleOrDefault(x => x.Email == Authuser.Email);
-
-            if (user is null)
-            {
-                var appUser = new AppUser
-                {
-                    Email = Authuser.Email,
-                    FirstName = Authuser.Name,
-                    LastName = Authuser.Name,
-                };
-
-                    var result = await UserManager.CreateAsync(appUser, Authuser.Password);
-                
-                var addToDB = dataContext.User.Add(Authuser);
-                var addToDb2 = dataContext.Add(appUser);
-                dataContext.SaveChanges();
-                if (result.Succeeded)
-                {
-                       var claims = new List<Claim>(2)
-                       {
-                           new Claim(ClaimTypes.Name, appUser.FirstName),
-                           new Claim(ClaimTypes.Role,"User")
-                       };
-                       var identity = new ClaimsIdentity(claims,"anyvalue");
-                       var principle = new ClaimsPrincipal(identity);
-                       HttpContext.SignInAsync("cookie",principle);
-                       await UserManager.AddToRoleAsync(appUser, "User");
-                    dataContext.SaveChanges(true);
-                    return RedirectToAction("Index", "Login");
-                }
-               
-            }
-            else
-            {
-                ViewData.Add("Error", "Email is already taken");
-                return View(Authuser);
-            }
-            return View();
-        }
-        [HttpGet]
-        public IActionResult Login()
-        {
-            return View();
-        }
-        [HttpPost]
-        public async Task<IActionResult> Login(User Authuser)
-        {
-            var user = await dataContext.User.FirstOrDefaultAsync(x => x.Email == Authuser.Email && x.Password == Authuser.Password);
-            if (user!= null)
-            {
-                ViewBag.username = string.Format("Successfully logged-in",Authuser.Name);
-
-                TempData["username"] = "none";
-                return RedirectToAction("Index");
-            }
-        
-            else
-            {
-                ViewBag.username = string.Format("Login Failed ");
-                return View();
-            }
-            return View();
-        }
-        public async Task SignOut()
-        {
-            await signInManager.SignOutAsync();
-        }
-        [Route("logout")]
-        public async Task<IActionResult> Logout()
-        {
-            await SignOut();
-            return RedirectToAction("Index");
-        }
+    
         public ActionResult Search(string term)
         {
             var result = productDbRepo.Search(term);

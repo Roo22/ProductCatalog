@@ -30,8 +30,10 @@ namespace WebApplication5.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(Product product)
         {
-            try
+           try
             {
+                var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+                product.UserId = int.Parse(userId);
                 ProductDbRepo.Add(product);
                 return RedirectToAction(nameof(Index));
             }

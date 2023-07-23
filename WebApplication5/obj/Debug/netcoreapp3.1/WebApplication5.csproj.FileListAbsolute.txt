@@ -183,11 +183,11 @@ D:\Visual Studio projects\WebApplication5\WebApplication5\bin\Debug\netcoreapp3.
 D:\Visual Studio projects\WebApplication5\WebApplication5\bin\Debug\netcoreapp3.1\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
 D:\Visual Studio projects\WebApplication5\WebApplication5\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
 D:\Visual Studio projects\WebApplication5\WebApplication5\bin\Debug\netcoreapp3.1\libman.json
-D:\Visual Studio projects\WebApplication5\WebApplication5\obj\Debug\netcoreapp3.1\Razor\Views\Home\Register.cshtml.g.cs
-D:\Visual Studio projects\WebApplication5\WebApplication5\obj\Debug\netcoreapp3.1\Razor\Views\Home\Login.cshtml.g.cs
 D:\Visual Studio projects\WebApplication5\WebApplication5\obj\Debug\netcoreapp3.1\Razor\Views\Admin\Create.cshtml.g.cs
 D:\Visual Studio projects\WebApplication5\WebApplication5\obj\Debug\netcoreapp3.1\Razor\Views\Admin\Index.cshtml.g.cs
 D:\Visual Studio projects\WebApplication5\WebApplication5\obj\Debug\netcoreapp3.1\Razor\Views\Home\Details.cshtml.g.cs
 D:\Visual Studio projects\WebApplication5\WebApplication5\obj\Debug\netcoreapp3.1\Razor\Views\Shared\LoginInfo.cshtml.g.cs
 D:\Visual Studio projects\WebApplication5\WebApplication5\obj\Debug\netcoreapp3.1\Razor\Views\Admin\Details.cshtml.g.cs
 D:\Visual Studio projects\WebApplication5\WebApplication5\obj\Debug\netcoreapp3.1\Razor\Views\Admin\Edit.cshtml.g.cs
+D:\Visual Studio projects\WebApplication5\WebApplication5\obj\Debug\netcoreapp3.1\Razor\Views\Account\Login.cshtml.g.cs
+D:\Visual Studio projects\WebApplication5\WebApplication5\obj\Debug\netcoreapp3.1\Razor\Views\Account\Register.cshtml.g.cs
