@@ -1,0 +1,42 @@
+﻿@model IEnumerable<Product>
+@{
+    ViewData["Title"] = "Home Page";
+}
+@foreach (var product in Model)
+    {
+    @if (product.StartDate >= product.CreatedDate && product.CreatedDate <= DateTime.Today && product.StartDate <= DateTime.Today)
+        {
+            <div class="my-item" style="display:none;" class="text-center">
+                <div class="card" style="width: 18rem;">
+                    @if (product.ImageURL != null)
+                    {
+                        <img class="card-img-top" src="@product.ImageURL" alt="Card image cap">
+                    }
+                    else
+                    {
+                        <img class="card-img-top"
+                         src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4MPzGBHqcCynkkW8OVOu3bpy3s1MSLd3EoCJwm7PQX5lTmhx04lFgY2etJb78phAoLhE&usqp=CAU"
+                         alt="Card image cap">
+                    }
+                    <div class="card-body">
+                        <h5 class="card-title">@Html.DisplayFor(model => product.Name)</h5>
+                        <p class="card-text">
+                            @Html.DisplayFor(model => product.Description)
+                        </p>
+                        <a href="@Url.Action("Details", new { id = product.Id })" class="btn btn-primary">Details</a>
+                    </div>
+                </div>
+            </div>
+            <script>
+                $(document).ready(function () {
+                    $('.my-item').last().show().delay(@product.Duration).fadeOut();
+                });
+            </script>
+        }
+        else
+        {
+            <div>
+                <p>@ViewData["CommingSoon"]</p>
+            </div>
+        }
+    }

@@ -1,0 +1,28 @@
+﻿@model Product
+
+@{
+    ViewData["Title"] = "Details";
+}
+<h1>Details</h1>
+<div>
+    <h4>
+        @Html.DisplayFor(model => model.Name)
+    </h4>
+    <h6>
+        @Html.DisplayNameFor(model => model.Description)
+    </h6>
+    <h7>
+        @Html.DisplayFor(model => model.Price)
+
+    </h7>
+    <p>
+        @Html.DisplayFor(model => model.Description)
+
+    </p>
+    
+</div>
+<div>
+    <p>
+        @Html.ActionLink("Back to Home", "Index")
+    </p>
+</div>

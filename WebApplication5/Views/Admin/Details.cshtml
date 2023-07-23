@@ -1,0 +1,49 @@
+﻿@model Product
+
+@{
+    ViewData["Title"] = "Details";
+}
+<h1>Details</h1>
+<div>
+    <h4>
+      @Html.DisplayNameFor(model => model.Name)
+    </h4>
+    <h4>
+        @Html.DisplayFor(model => model.Name)
+    </h4>
+       <h4>
+      @Html.DisplayNameFor(model => model.Id)
+    </h4>
+    <h4>
+        @Html.DisplayFor(model => model.Id)
+    </h4>
+       <h4>
+      @Html.DisplayNameFor(model => model.Price)
+    </h4>
+    <h4>
+        @Html.DisplayFor(model => model.Price)
+    </h4>
+       <h4>
+      @Html.DisplayNameFor(model => model.CreatedDate)
+    </h4>
+    <h4>
+        @Html.DisplayFor(model => model.CreatedDate)
+    </h4>
+    <h4>
+        @Html.DisplayNameFor(model => model.Description)
+    </h4>
+       <h4>
+      @Html.DisplayNameFor(model => model.StartDate)
+    </h4>
+    <h4>
+        @Html.DisplayFor(model => model.StartDate)
+    </h4>
+    <h4>
+        @Html.DisplayFor(model => model.Description)
+
+    </h4>
+</div>
+<div>
+    <p>
+        @Html.ActionLink("Back to Home", "Index")
+    </p
