@@ -6,7 +6,7 @@ using WebApplication5.Models;
 
 namespace WebApplication5.Data
 {
-    public class DataContext : IdentityDbContext<AppUser>
+    public class DataContext : IdentityDbContext<User>
     {
         public DataContext(DbContextOptions options) : base(options) 
         {
