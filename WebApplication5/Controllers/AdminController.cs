@@ -32,7 +32,6 @@ namespace WebApplication5.Controllers
         {
            try
             {
-                var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
                 product.UserId = id;
                 ProductDbRepo.Add(product);
                 return RedirectToAction(nameof(Index));
