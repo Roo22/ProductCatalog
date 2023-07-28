@@ -28,12 +28,12 @@ namespace WebApplication5.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Product product)
+        public ActionResult Create(Product product, int id)
         {
            try
             {
                 var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-                product.UserId = int.Parse(userId);
+                product.UserId = id;
                 ProductDbRepo.Add(product);
                 return RedirectToAction(nameof(Index));
             }
