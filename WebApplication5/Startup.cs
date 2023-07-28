@@ -50,7 +50,8 @@ namespace WebApplication5
 
                 options.User.RequireUniqueEmail = true;
             }).AddEntityFrameworkStores<DataContext>()
-            .AddSignInManager<SignInManager<User>>().AddUserManager<UserManager<User>>();
+            .AddSignInManager<SignInManager<User>>().AddUserManager<UserManager<User>>()
+            .AddRoleManager<RoleManager<IdentityRole>>(); 
             services.AddScoped<IEntityDBRepo<Category>, CategoryDbRepo>();
             services.AddScoped<IEntityDBRepo<Product>,ProductDbRepo>();
             services.AddDbContext<DataContext>

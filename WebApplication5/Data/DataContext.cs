@@ -6,7 +6,7 @@ using WebApplication5.Models;
 
 namespace WebApplication5.Data
 {
-    public class DataContext : IdentityDbContext<AppUser>
+    public class DataContext : IdentityDbContext<User>
     {
         public DataContext(DbContextOptions options) : base(options) 
         {
@@ -51,7 +51,7 @@ namespace WebApplication5.Data
                  }
                 );
         }
-        public DbSet<WebApplication5.Models.User> User { get; set; }
+        public DbSet<User> User { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<Category> Categories { get; set; }
     }
