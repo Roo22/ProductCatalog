@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 using System.Linq;
 using WebApplication5.Data;
 
@@ -37,7 +38,9 @@ namespace WebApplication5.Models.Repos
 
         public List<Category> Search(string term)
         {
-            return context.Categories.Where(a => a.Name.Contains(term)).ToList();
+           return context.Categories.Include(p => p.Product)
+                .Where(p => p.Name.ToLower().Contains(term.ToLower()))
+                .ToList();
 
         }
 

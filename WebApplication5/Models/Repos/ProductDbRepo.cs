@@ -38,7 +38,10 @@ namespace WebApplication5.Models.Repos
 
         public List<Product> Search(string term)
         {
-            return context.Products.Where(a => a.Category.Name.Contains(term)).ToList();
+            return context.Products
+                .Include(b => b.Category)
+                .Where(b => b.Category.Name.ToLower() == term.ToLower())
+                .ToList();
         }
 
         public void Update(int id, Product entity)
